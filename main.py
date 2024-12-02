@@ -4,22 +4,18 @@ from prices import prices
 from phrases import phrases
 
 def main():
-    # Вітання
     print("Вітаємо в ресторані 'Дача'!")
     name = input("Як вас звати? ")
     print(f"Привіт, {name}! Сьогодні у нас 15% знижка на всі страви!")
 
-    # Показати меню
     print("\nМеню:")
     for dish, price in prices.items():
         print(f"{dish} - {price} грн за порцію")
 
-    # Пропозиції
     print("\nНаші рекомендації:")
     for dish, phrase in phrases.items():
         print(f"{dish}: {phrase}")
 
-    # Формування замовлення
     print("\nВведіть кількість порцій для кожної страви (0, якщо не хочете замовити):")
     order = {}
     for dish in prices.keys():
@@ -34,7 +30,6 @@ def main():
             except ValueError:
                 print("Будь ласка, введіть число.")
 
-    # Розрахунок замовлення
     total = 0
     print("\nВаше замовлення:")
     for dish, quantity in order.items():
@@ -43,11 +38,9 @@ def main():
             print(f"{dish}: {quantity} порцій x {prices[dish]} грн = {cost} грн")
             total += cost
 
-    # Знижка
     discount = total * 0.15
     final_total = total - discount
 
-    # Чек
     print("\nЧек:")
     print(f"Загальна сума: {total} грн")
     print(f"Знижка (15%): {discount:.2f} грн")
